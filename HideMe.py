@@ -8,7 +8,6 @@ import sqlite3
 new = 1
 url = "https://www.gmail.com"
 
-
 def OpenWeb():
     webbrowser.open(url, new=new)
 
@@ -64,18 +63,20 @@ def encode():
     buttonencode = Button(enc, text="Encode", bd=3, font=('', 13), command=encodee)
     buttonencode.place(relx=0.4, rely=0.6)
 
-
+    
 def decode():
     dnc = Tk()
     dnc.title("Decode")
     dnc.geometry("500x400+300+150")
 
+    
     def openfile():
         global fileopen
         fileopen = StringVar()
         fileopen = askopenfilename(initialdir="/Desktop", title="select file",
                                    filetypes=(("jpeg files", "*jpg"), ("all files", "*.*")))
 
+        
     def decodee():
         message = stg.reveal(fileopen)
 
@@ -105,7 +106,6 @@ def stegit():
 
 
 class main:
-
     def __init__(self, master):
         self.master = master
         self.username = StringVar()
@@ -118,6 +118,7 @@ class main:
         self.n_Phone_no = StringVar()
         self.widgets()
 
+        
     def login(self):
         with sqlite3.connect('Records.db') as db:
             c = db.cursor()
@@ -135,6 +136,7 @@ class main:
         else:
             ms.showerror('Oops!', 'Username Not Found.')
 
+            
     def new_user(self):
         with sqlite3.connect('Records.db') as db:
             c = db.cursor()
@@ -150,7 +152,8 @@ class main:
         c.execute(insert,
                   [(self.n_username.get()), (self.n_password.get()), (self.n_email.get()), (self.n_Phone_no.get())])
         db.commit()
-
+        
+        
     def log(self):
         self.username.set('')
         self.password.set('')
